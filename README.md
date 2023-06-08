@@ -87,7 +87,7 @@ The first phase is to manipulate a powerful storage system to give an abstractio
 
 ## Compilation
 **To start up the interpreter, clone this repository, and run the console file on linux as follows:**
-- Clone this repository: ```git clone "https://github.com/Dikachis/AirBnB_clone.git"```
+- Clone this repository: ```git clone "https://github.com/Jamie897/AirBnB_clone.git"```
 - Access AirBnb directory: ```cd AirBnB_clone```
 - Run hbnb(interactively): ```./console``` and then press enter command
 - Run hbnb(non-interactively): ```echo "<command>" | ./console.py```
