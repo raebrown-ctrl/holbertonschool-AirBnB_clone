@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-uinitest for the Amenity
+unittest for the amenity
 """
 
 
@@ -13,8 +13,9 @@ import uuid
 
 class Test_User(unittest.TestCase):
     """
-    calss Test for User 
+    class test for user 
     """
      
     def test_name_is_public_str(self):
+        B
         self.assertEqual(str, type(Amenity.name))
