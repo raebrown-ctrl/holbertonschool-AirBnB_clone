@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-uinitest for the base moodel
+unittest for the base model
 """
 
 import unittest
