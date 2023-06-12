@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
-HBNB CLONE
+    import modules
 """
-
+import json
 from models.base_model import BaseModel
+import os
 from models.user import User
 from models.state import State
 from models.city import City
@@ -32,30 +33,28 @@ class FileStorage:
 
     def new(self, obj):
         """
-        public instance methods that set in
-        objects the obj with key
+            sets in __objects the obj with key <obj class name>.id
+            args:
+                obj: the object
         """
-        self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
+        self.__objects.update({f"{obj.__class__.__name__}.{obj.id}": obj})
 
     def save(self):
         """
-        serializes __objects to the JSON file (path: __file_path)
+            serializes __objects to the JSON file
         """
-        new_dict = {}
-        for k, v in self.__objects.items():
-            new_dict[k] = v.to_dict()
-        with open(self.__file_path, "w", encoding="UTF-8") as f:
-            json.dump(new_dict, f)
+        dict = {}
+        for key, value in self.__objects.items():
+            dict[key] = value.to_dict()
+        with open(self.__file_path, "w", encoding="utf-8") as f:
+            json.dump(dict, f)
 
     def reload(self):
         """
-        deserializes the JSON file to __objects
+            deserializes the JSON file to __objects
         """
-        try:
-            with open(self.__file_path, "r", encoding="UTF-8") as f:
-                obj = json.load(f)
-            for k, v in obj.items():
-                class_name = k.split('.')[0]
-                self.__objects[k] = eval(class_name)(**v)
-        except BaseException:
-            pass
+        if os.path.exists(self.__file_path) is True:
+            with open(self.__file_path, "r", encoding="utf-8") as fd:
+                dictj = json.load(fd)
+            for key, value in dictj.items():
+                FileStorage.__objects[key] = eval(value['__class__'])(**value)
