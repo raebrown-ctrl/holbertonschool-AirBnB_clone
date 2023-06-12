@@ -92,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """
-        Delete an instnce of Class Name
+        Delete an instance of Class Name
         """
         args = arg.split(" ")
         if len(arg) == 0:
